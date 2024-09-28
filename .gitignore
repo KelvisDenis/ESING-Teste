@@ -1,0 +1,48 @@
+# Ignore arquivos de configuração locais do Visual Studio
+.vscode/
+*.user
+*.suo
+*.cache
+*.csproj.user
+
+# Diretório de pacotes NuGet
+packages/
+*.nupkg
+# Pacotes baixados via NuGet não precisam ser versionados, pois serão restaurados automaticamente
+
+# Diretório de binários
+bin/
+obj/
+# Arquivos compilados (.dll, .exe) não precisam estar no controle de versão
+
+# Arquivos temporários e logs
+*.log
+*.tmp
+*.temp
+
+# Diretórios de publicação e deploy
+publish/
+PublishOutput/
+*.Publish.xml
+
+# Diretórios de arquivos de cache ou temporários
+_AppStart/*.*
+App_Data/
+
+# Configurações de build e publicação
+project.lock.json
+project.fragment.lock.json
+
+# Ignorar arquivos de backup e temporários criados por editores
+*~
+*.bak
+*.swp
+
+# Ignorar logs e relatórios de análise de ferramentas como SonarQube
+.sonar/
+coverage/
+TestResults/
+*.coverage
+
+# Ignorar arquivos de configuração do IIS Express
+iisexpress/
