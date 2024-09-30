@@ -38,11 +38,15 @@ namespace CRUD.Application.Service
             var response = await _peopleSalaryRepository.GetPeopleSalarByNameAsync(name);
             return response;
         }
-        public async Task<IEnumerable<PeopleSalaryModel>> GetAllPeopleSalaryAsync()
+        public async Task<IEnumerable<PeopleSalaryModel>> GetAllPeopleSalaryAsync(int pageNumber, int pageSize)
         {
 
-            var response = await _peopleSalaryRepository.GetAllPeopleSalarAsync();
+            var response = await _peopleSalaryRepository.GetAllPeopleSalarAsync(pageNumber, pageSize);
             return response;
+        }
+        public async Task<int> GetTotalPeopleSalaryCountAsync()
+        {
+            return await _peopleSalaryRepository.GetTotalCountPeopleSalaryAsync();
         }
         public async Task<bool> UpdatePeopleSalaryAsync(PeopleSalaryModel update)
         {

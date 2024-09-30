@@ -61,8 +61,8 @@
         </div>
 
         <td>
-            <asp:Button ID="btnCreate" runat="server" Text="Criar" CssClass="btn btn-success" OnClick="btnExcluir_Click" />
-            <asp:Button ID="btnexcluir" runat="server" Text="Voltar" CssClass="btn btn-danger" OnClick="btnExcluir_Click" />
+            <asp:Button ID="btnCreate" runat="server" Text="Criar" CssClass="btn btn-success" OnClick="btnCreate_Click" />
+            <asp:Button ID="btnexcluir" runat="server" Text="Voltar" CssClass="btn btn-danger" OnClick="btnReturn_Click" />
         </td>
 
     </div>

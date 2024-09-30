@@ -106,12 +106,20 @@ namespace CRUD.Infrastructure.Repositories
             }
             return null;
         }
-        public async Task<IEnumerable<PeopleSalaryModel>> GetAllPeopleSalarAsync()
+        public async Task<IEnumerable<PeopleSalaryModel>> GetAllPeopleSalarAsync(int pageNumber, int pageSize)
         {
             var peoples = new List<PeopleSalaryModel>();
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("SELECT * FROM public.\"Pessoa_Salario\"", connection);
+                // Adiciona a lógica de paginação usando OFFSET e LIMIT
+                var command = new NpgsqlCommand(
+                    "SELECT * FROM public.\"Pessoa_Salario\" " +
+                    "ORDER BY \"ID\" " +
+                    "OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY", connection);
+
+                // Calcula o deslocamento baseado na página e no tamanho da página
+                command.Parameters.AddWithValue("@Offset", (pageNumber - 1) * pageSize);
+                command.Parameters.AddWithValue("@PageSize", pageSize);
 
                 try
                 {
@@ -125,11 +133,9 @@ namespace CRUD.Infrastructure.Repositories
                                 ID = (int)reader["ID"],
                                 Name = (string)reader["Nome"],
                                 Salary = (int)reader["Salario"],
-
                             };
                             peoples.Add(people);
                         }
-                        return peoples;
                     }
                 }
                 catch (Exception ex)
@@ -137,7 +143,7 @@ namespace CRUD.Infrastructure.Repositories
                     Console.WriteLine(ex.Message);
                 }
             }
-            return null;
+            return peoples;
         }
         public async Task<bool> UpdatePeopleSalaryAsync(PeopleSalaryModel model)
         {
@@ -180,6 +186,26 @@ namespace CRUD.Infrastructure.Repositories
                 {
                     Console.WriteLine(ex.Message);
                     return false;
+                }
+            }
+        }
+        public async Task<int> GetTotalCountPeopleSalaryAsync()
+        {
+            using (var connection = new NpgsqlConnection(_connectionString))
+            {
+                var command = new NpgsqlCommand("SELECT COUNT(*) FROM public.\"Pessoa_Salario\"", connection);
+                try
+                {
+                    await connection.OpenAsync();
+                    var result = await command.ExecuteScalarAsync();
+                    if (result is long count)  return (int)count;
+                    return 0;
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return 0;
                 }
             }
         }
