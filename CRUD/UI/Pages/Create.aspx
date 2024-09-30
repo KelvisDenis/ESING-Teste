@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Create Item</title>
-    <!-- Adicionando Bootstrap para melhor visual -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>
 
@@ -10,9 +9,8 @@
     <div class="container mt-5">
         <h2 class="mb-4">Criar Nova Pessoa</h2>
 
-        <!-- Formulário com classes Bootstrap -->
         <div class="form-group">
-            <label for="TextBox1">Name</label>
+            <label for="TextBox1">Nome</label>
             <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Enter name"></asp:TextBox>
         </div>
 
@@ -62,9 +60,10 @@
             </asp:DropDownList>
         </div>
 
-        <!-- Botão Criar -->
-        <asp:Button ID="btnCreate" runat="server" Text="Create" CssClass="btn btn-primary mt-3" OnClick="btnCreate_Click" />
-        <asp:Button ID="btnreturn" runat="server" Text="Voltar" CssClass="btn btn-secondary mt-3" OnClick="btnReturn_Click" /> 
+        <td>
+            <asp:Button ID="btnCreate" runat="server" Text="Criar" CssClass="btn btn-success" OnClick="btnExcluir_Click" />
+            <asp:Button ID="btnexcluir" runat="server" Text="Voltar" CssClass="btn btn-danger" OnClick="btnExcluir_Click" />
+        </td>
 
     </div>
 </asp:Content>

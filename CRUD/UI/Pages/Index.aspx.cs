@@ -1,4 +1,6 @@
-﻿using CRUD.Domain.Entities.Models;
+﻿using CRUD.Application.Service;
+using CRUD.Domain.Entities.Models;
+using CRUD.Infrastructure.Repositories;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -14,44 +16,12 @@ namespace CRUD.UI.Pages
     public partial class Index : System.Web.UI.Page
     {
         // metodo para buscar todos os valores da tabela Pessoa_salario no BD e renderiza-lo
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
-            var people = new List<PeopleSalary>();
+            var service = new PeopleSalaryService();
+            var peoples = await service.GetAllPeopleSalaryAsync();
 
-            string connectionString = ConfigurationManager.ConnectionStrings["PostgresConnection"].ConnectionString;
-
-            using (var connection = new NpgsqlConnection(connectionString))
-            {
-                connection.Open();
-                string sql = "SELECT \"ID\", \"Nome\", \"Salario\" FROM public.\"Pessoa_Salario\"";
-
-               
-
-                using (var command = new NpgsqlCommand(sql, connection))
-                {
-                    
-
-                    using (var reader =  command.ExecuteReader())
-                    {
-
-
-                        while (reader.Read())
-                        {
-
-                            var pessoa = new PeopleSalary
-                            {
-                                ID = reader.GetInt32(0),
-                                Name = reader.GetString(1),    
-                                Salary = reader.GetInt32(2)    
-                            };
-                            people.Add(pessoa);
-                        }
-                    }
-                }
-            }
-
-            // Bind the retrieved data to the repeater
-            peopleRepeater.DataSource = people;
+            peopleRepeater.DataSource = peoples;
             peopleRepeater.DataBind();
         }
         // redireciona para a pagina de create
@@ -59,9 +29,28 @@ namespace CRUD.UI.Pages
         {
             Response.Redirect("~/UI/Pages/Create.aspx");
         }
-        protected void btnSearch_Click(object sender, EventArgs e)
+        protected async void btnSearch_Click(object sender, EventArgs e)
         {
-            
+            var name = searchInput.Text;
+
+            if (name != null)
+            {
+                var service = new PeopleSalaryService();
+                var people = await service.GetPeopleSalaryByNameAsync(name);
+                var peoples = new List<PeopleSalaryModel>() { people };
+
+                peopleRepeater.DataSource = peoples;
+                peopleRepeater.DataBind();
+            }
+            else
+            {
+                var service = new PeopleSalaryService();
+                var peoples = service.GetAllPeopleSalaryAsync();
+
+                peopleRepeater.DataSource = peoples;
+                peopleRepeater.DataBind();
+            }
+           
         }
     }
 

@@ -105,12 +105,12 @@ namespace CRUD.UI.Pages
         protected global::System.Web.UI.WebControls.Button btnCreate;
 
         /// <summary>
-        /// Controle btnreturn.
+        /// Controle btnexcluir.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnreturn;
+        protected global::System.Web.UI.WebControls.Button btnexcluir;
     }
 }

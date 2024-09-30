@@ -5,15 +5,15 @@ using System.Web;
 
 namespace CRUD.Domain.Entities.Models
 {
-    public class PeopleSalary
+    public class CargoModel
     {
         public int ID { get; set; }
         public string Name { get; set; }
         public int Salary { get; set; }
 
+        public CargoModel() { }
 
-        public PeopleSalary() { }
-        public PeopleSalary(int iD, string name, int salary)
+        public CargoModel(int iD, string name, int salary)
         {
             ID = iD;
             Name = name;

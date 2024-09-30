@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Index" Language="C#" MasterPageFile="~/UI/Pages/MasterPage.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="CRUD.UI.Pages.Index" %>
+﻿<%@ Page Title="Index" Language="C#" MasterPageFile="~/UI/Pages/MasterPage.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="CRUD.UI.Pages.Index" Async="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Gerencia</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -11,7 +11,7 @@
         <!-- Opção para buscar pessoas -->
         <div class="form-group">
             <label for="searchInput">Buscar por Nome</label>
-            <asp:TextBox ID="searchInput" runat="server" CssClass="form-control" placeholder="Digite o nome para buscar"></asp:TextBox>
+            <asp:TextBox ID="searchInput" runat="server" CssClass="form-control" placeholder="Digite o nome"></asp:TextBox>
         </div>
 
 
@@ -38,7 +38,13 @@
                             <td>R$<%# Eval("Salary") %></td>
                             
                             <td>
-                                <asp:Button ID="btneditar" runat="server" Text="Editar" CssClass="btn btn-warning" OnClick="btnSearch_Click" />
+                               <asp:HyperLink 
+                                ID="lnkEditar" 
+                                runat="server" 
+                                Text="Editar" 
+                                CssClass="btn btn-warning" 
+                                NavigateUrl='<%# "Edit.aspx?id=" + Eval("ID") %>'>
+                            </asp:HyperLink>
                                 <asp:Button ID="btnexcluir" runat="server" Text="Excluir" CssClass="btn btn-danger" OnClick="btnSearch_Click" />
                             </td>
                         </tr>
