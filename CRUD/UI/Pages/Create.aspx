@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Create Item" Language="C#" MasterPageFile="~/UI/Pages/MasterPage.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="CRUD.UI.Pages.Create" %>
+﻿<%@ Page Title="Create Item" Language="C#" MasterPageFile="~/UI/Pages/MasterPage.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="CRUD.UI.Pages.Create"  Async="true"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Create Item</title>
@@ -17,6 +17,10 @@
         <div class="form-group">
             <label for="TextBox2">Cidade</label>
             <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter cidade"></asp:TextBox>
+        </div>
+        <div class="form-group">
+            <label for="TextBox9">País</label>
+            <asp:TextBox ID="TextBox9" runat="server" CssClass="form-control" placeholder="Enter País"></asp:TextBox>
         </div>
 
         <div class="form-group">

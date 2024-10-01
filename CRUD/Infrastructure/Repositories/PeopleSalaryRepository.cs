@@ -22,9 +22,8 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("INSERT INTO public.\"Pessoa_Salario\" (\"ID\", \"Nome\", \"Salario\")" +
-                    " VALUES (@ID, @Nome, @Salario, )", connection);
-                command.Parameters.AddWithValue("@ID", model.ID);
+                var command = new NpgsqlCommand("INSERT INTO public.\"Pessoa_Salario\" (\"Nome\", \"Salario\")" +
+                    " VALUES (@Nome, @Salario)", connection);
                 command.Parameters.AddWithValue("@Nome", model.Name);
                 command.Parameters.AddWithValue("@Salario", model.Salary);
                 

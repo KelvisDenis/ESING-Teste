@@ -56,8 +56,15 @@ namespace CRUD.Application.Service
         }
         public async Task<bool> RemovePeopleSalaryAsync(int id)
         {
+            var servicePeople = new PeopleService();
+
+            var peopleSalary = await _peopleSalaryRepository.GetPeopleSalarByIDAsync(id);
+            var people = await servicePeople.GetPeopleByNameAsync(peopleSalary.Name);
 
             var response = await _peopleSalaryRepository.RemovePeopleSalaryAsync(id);
+            var removePeople = await servicePeople.RemovePeopleAsync(people.ID);
+
+
             return response;
         }
     }

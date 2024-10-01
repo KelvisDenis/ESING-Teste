@@ -11,79 +11,61 @@ namespace CRUD.UI.Pages
 {
 
 
-    public partial class Index
+    public partial class EditSalary
     {
 
         /// <summary>
-        /// Controle searchInput.
+        /// Controle TextBoxNome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox searchInput;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNome;
 
         /// <summary>
-        /// Controle btnSearch.
+        /// Controle TextBoxCargo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxCargo;
 
         /// <summary>
-        /// Controle btnadd.
+        /// Controle TextBoxSalario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnadd;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxSalario;
 
         /// <summary>
-        /// Controle peopleRepeater.
+        /// Controle TextBoxNovoSalario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater peopleRepeater;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNovoSalario;
 
         /// <summary>
-        /// Controle noDataRow.
+        /// Controle btnUpdate.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow noDataRow;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
 
         /// <summary>
-        /// Controle btnPrevious.
+        /// Controle btnReturn.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrevious;
-
-        /// <summary>
-        /// Controle lblPageNumber.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPageNumber;
-
-        /// <summary>
-        /// Controle btnNext.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.Button btnReturn;
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace CRUD.UI.Pages
 {
@@ -42,11 +43,9 @@ namespace CRUD.UI.Pages
 
             
 
-            // Bind dos dados no Repeater
             peopleRepeater.DataSource = peoples;
             peopleRepeater.DataBind();
 
-            // Atualizar o número da página
             lblPageNumber.Text = "Página " + CurrentPage;
         }
 
@@ -77,31 +76,46 @@ namespace CRUD.UI.Pages
         protected async void btnSearch_Click(object sender, EventArgs e)
         {
             var name = searchInput.Text;
+            name = name.Trim(new char[] { ' ', '\t', '\n', '\r' });
+
+            var service = new PeopleSalaryService();
+            var peoples = new List<PeopleSalaryModel> ();
 
             if (!string.IsNullOrEmpty(name))
             {
-                var service = new PeopleSalaryService();
                 var people = await service.GetPeopleSalaryByNameAsync(name);
 
-                var peoples = new List<PeopleSalaryModel> { people };
+                if (people == null || peoples.Count == 0)
+                {
 
-                peopleRepeater.DataSource = peoples;
-                peopleRepeater.DataBind();
+                    peoples.Add(new PeopleSalaryModel { Name = "Não encontrado", ID = null, Salary = null  });
+                }
             }
             else
             {
-                CurrentPage = 1; // Reseta a página ao fazer uma busca sem resultado
+                CurrentPage = 1; 
                 await LoadPeopleData();
+                return; 
             }
+            peopleRepeater.DataSource = peoples;
+            peopleRepeater.DataBind();
         }
         protected void btnadd_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/UI/Pages/Create.aspx");
 
         }
-        protected void btnExcluir_Click(object sender, EventArgs e)
+        
+        protected async void btnExcluir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UI/Pages/Create.aspx");
+            var service = new PeopleSalaryService();
+
+            var button = (Button)sender; 
+            int id = Convert.ToInt32(button.CommandArgument);
+
+            var response = await service.RemovePeopleSalaryAsync(id);
+
+            Response.Redirect(Request.RawUrl);
 
         }
 

@@ -127,6 +127,7 @@
     <Content Include="UI\Pages\Create.aspx" />
     <Content Include="UI\Pages\Delete.aspx" />
     <Content Include="UI\Pages\Edit.aspx" />
+    <Content Include="UI\Pages\EditSalary.aspx" />
     <Content Include="UI\Pages\Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -164,6 +165,13 @@
     </Compile>
     <Compile Include="UI\Pages\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\EditSalary.aspx.cs">
+      <DependentUpon>EditSalary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\EditSalary.aspx.designer.cs">
+      <DependentUpon>EditSalary.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
