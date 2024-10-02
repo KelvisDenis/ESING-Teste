@@ -57,7 +57,7 @@ namespace CRUD.Application.Service
             var serviceCargo = new CargoService();
 
             var cargoModel = await serviceCargo.GetCargoByIDAsync(update.IDCargo);
-            var peopleSalaryModel = await servicePeopleSalary.GetPeopleSalaryByNameAsync(update.Nome);
+            var peopleSalaryModel = await servicePeopleSalary.GetPeopleSalaryByIDAsync(update.ID);
 
             peopleSalaryModel.Name = update.Nome;
             peopleSalaryModel.Salary = cargoModel.Salary;

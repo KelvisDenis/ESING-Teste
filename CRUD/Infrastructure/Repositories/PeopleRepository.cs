@@ -32,7 +32,7 @@ namespace CRUD.Infrastructure.Repositories
                         await connection.OpenAsync();
                         using (var reader = await command.ExecuteReaderAsync())
                         {
-                            if (await reader.ReadAsync())
+                            if (await reader.ReadAsync()) 
                             {
                                 return new People
                                 {

@@ -84,11 +84,12 @@ namespace CRUD.UI.Pages
             if (!string.IsNullOrEmpty(name))
             {
                 var people = await service.GetPeopleSalaryByNameAsync(name);
+                peoples.Add(people);
 
                 if (people == null || peoples.Count == 0)
                 {
 
-                    peoples.Add(new PeopleSalaryModel { Name = "Não encontrado", ID = null, Salary = null  });
+                    peoples.Clear();
                 }
             }
             else

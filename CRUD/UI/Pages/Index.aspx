@@ -3,6 +3,7 @@
     <title>Gerência</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../../Application/Scripts/CurrencyLoadPage.js"></script>
+     <script src="../../Application/Scripts/ConfirmDelete.js" type="text/javascript"></script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -33,7 +34,7 @@
                             <tr>
                                 <td><%# Eval("ID") != null ? Eval("ID") : "" %></td>
                                 <td><%# Eval("Name") != null ? Eval("Name") : "" %></td>
-                                <td class="salary-value" data-raw='<%# Eval("Salary") %>'><%# Eval("Salary") %></td>
+                                <td class="salary-value" data-raw='<%# Eval("Salary") %>'></td>
 
                                 <td>
                                     <asp:HyperLink 
@@ -55,14 +56,16 @@
                                         Visible='<%# Eval("ID") != null %>'>
                                     </asp:HyperLink>
 
-                                    <asp:Button 
-                                        ID="btnExcluir" 
-                                        runat="server" 
-                                        Text="Excluir" 
-                                        CssClass="btn btn-danger" 
-                                        CommandArgument='<%# Eval("ID") %>' 
-                                        OnClick="btnExcluir_Click" 
-                                        Visible='<%# Eval("ID") != null %>' />
+                                     <asp:Button 
+                                    ID="btnExcluir" 
+                                    runat="server" 
+                                    Text="Excluir" 
+                                    CssClass="btn btn-danger" 
+                                    CommandArgument='<%# Eval("ID") %>' 
+                                    OnClick="btnExcluir_Click" 
+                                    Visible='<%# Eval("ID") != null %>' 
+                                    OnClientClick="return confirmDelete();" />
+
                                 </td>
                             </tr>
                         </ItemTemplate>
