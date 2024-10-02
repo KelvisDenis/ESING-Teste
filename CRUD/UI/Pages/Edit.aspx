@@ -11,12 +11,21 @@
 
         <div class="form-group">
             <label for="TextBox1">Nome</label>
+            <asp:HiddenField ID="HiddenFieldPersonId" runat="server" Value="" />
+        </div>
+        <div class="form-group">
+            <label for="TextBox1">Nome</label>
             <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Enter name"></asp:TextBox>
         </div>
 
         <div class="form-group">
             <label for="TextBox2">Cidade</label>
             <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Enter cidade"></asp:TextBox>
+        </div>
+
+         <div class="form-group">
+            <label for="TextBox9">País</label>
+            <asp:TextBox ID="TextBox9" runat="server" CssClass="form-control" placeholder="Enter país"></asp:TextBox>
         </div>
 
         <div class="form-group">

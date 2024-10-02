@@ -149,7 +149,7 @@ namespace CRUD.Infrastructure.Repositories
             using (var connection = new NpgsqlConnection(_connectionString))
             {
                 var command = new NpgsqlCommand(
-                "UPDATE public.\"Pessoa_Salario\" SET \"Nome\" = @Nome, \"Salario\" = @Salario, WHERE \"ID\" = @ID", connection);
+                "UPDATE public.\"Pessoa_Salario\" SET \"Nome\" = @Nome, \"Salario\" = @Salario WHERE \"ID\" = @ID", connection);
                 command.Parameters.AddWithValue("@Nome", model.Name);
                 command.Parameters.AddWithValue("@Salario", model.Salary);
                 command.Parameters.AddWithValue("@ID", model.ID);

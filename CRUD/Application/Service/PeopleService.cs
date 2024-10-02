@@ -57,7 +57,10 @@ namespace CRUD.Application.Service
             var serviceCargo = new CargoService();
 
             var cargoModel = await serviceCargo.GetCargoByIDAsync(update.IDCargo);
-            var peopleSalaryModel = new PeopleSalaryModel(update.ID, update.Nome, cargoModel.Salary);
+            var peopleSalaryModel = await servicePeopleSalary.GetPeopleSalaryByNameAsync(update.Nome);
+
+            peopleSalaryModel.Name = update.Nome;
+            peopleSalaryModel.Salary = cargoModel.Salary;
 
             var response = await _peopleRepository.UpdatePeopleAsync(update);
             var responsePeopleSalary = await servicePeopleSalary.UpdatePeopleSalaryAsync(peopleSalaryModel);

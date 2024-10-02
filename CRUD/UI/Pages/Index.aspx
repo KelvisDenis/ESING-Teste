@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Gerência</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../Application/Scripts/CurrencyLoadPage.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container mt-5">
@@ -31,7 +33,8 @@
                             <tr>
                                 <td><%# Eval("ID") != null ? Eval("ID") : "" %></td>
                                 <td><%# Eval("Name") != null ? Eval("Name") : "" %></td>
-                                <td><%# Eval("Salary") != null ? "R$" + Eval("Salary") : "" %></td>
+                                <td class="salary-value" data-raw='<%# Eval("Salary") %>'><%# Eval("Salary") %></td>
+
                                 <td>
                                     <asp:HyperLink 
                                         ID="LinkRecalcular" 

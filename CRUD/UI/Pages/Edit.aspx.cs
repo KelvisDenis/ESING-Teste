@@ -36,18 +36,51 @@ namespace CRUD.UI.Pages
             {
                 TextBox1.Text = person.Nome;
                 TextBox2.Text = person.Cidade;
+                TextBox9.Text = person.Pais;
                 TextBox3.Text = person.Email;
                 TextBox4.Text = person.Endereco;
                 TextBox5.Text = person.CEP;
                 TextBox6.Text = person.Usuario;
                 TextBox7.Text = person.Telefone;
                 TextBox8.Text = person.DataNascimento.ToString("yyyy-MM-dd");
+                HiddenFieldPersonId.Value = person.ID.ToString();
                 DropDownListCargo.SelectedValue = person.IDCargo.ToString();
             }
         }
-        protected void btnEdit_Click(object sender, EventArgs e)
+        protected async void btnEdit_Click(object sender, EventArgs e)
         {
+            var service = new PeopleService();
+            int id = int.Parse(HiddenFieldPersonId.Value);
+            string nome = TextBox1.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string cidade = TextBox2.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string pais = TextBox9.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string email = TextBox3.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string endereco = TextBox4.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string cep = TextBox5.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string usuario = TextBox6.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string telefone = TextBox7.Text.Trim(new char[] { ' ', '\t', '\n', '\r' });
+            string dataNascimento = TextBox8.Text;
 
+            int cargo = int.Parse(DropDownListCargo.SelectedValue);
+
+            var pessoa = new People
+            {
+                ID = id,
+                Nome = nome,
+                Cidade = cidade,
+                Pais = pais,
+                Email = email,
+                Endereco = endereco,
+                CEP = cep,
+                Usuario = usuario,
+                Telefone = telefone,
+                DataNascimento = DateTime.Parse(dataNascimento),
+                IDCargo = cargo
+                
+            };
+
+            var response = await service.UpdatePeopleAsync(pessoa);
+            if (response) Response.Redirect("~/UI/Pages/Index.aspx");
         }
         protected void btnReturn_Click(object sender, EventArgs e)
         {

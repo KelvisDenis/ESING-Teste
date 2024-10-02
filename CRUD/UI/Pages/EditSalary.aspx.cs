@@ -1,4 +1,5 @@
 ﻿using CRUD.Application.Service;
+using CRUD.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,19 +38,38 @@ namespace CRUD.UI.Pages
 
             if (people != null &&  peopleSalary != null && cargo != null )
             {
-                var newString = $"R$ {peopleSalary.Salary}";
+                var newString = $"R$ {peopleSalary.Salary},00";
                 TextBoxNome.Text = peopleSalary.Name;
                 TextBoxCargo.Text = cargo.Name;
                 TextBoxSalario.Text = newString;
+                HiddenFieldPersonId.Value = id.ToString();
 
             }
         }
-        protected void btnUpdate_Click(object sender, EventArgs e)
+        protected async void btnUpdate_Click(object sender, EventArgs e)
         {
+            var service = new PeopleSalaryService();
+
+            var id = int.Parse(HiddenFieldPersonId.Value);
+            string name = TextBoxNome.Text;
+            string cargo = TextBoxCargo.Text;
+            string salarioFormatado = TextBoxNovoSalario.Text.Replace("R$", "").Replace(".", "").Replace(",", "");
+            int salary = int.Parse(salarioFormatado);
+
+            var people = new PeopleSalaryModel
+            {
+                ID = id,
+                Name = name,
+                Salary = salary
+            };
+            var response = await service.UpdatePeopleSalaryAsync(people);
+
+            if(response) Response.Redirect("~/UI/Pages/Index.aspx");
 
         }
         protected void btnReturn_Click(object sender, EventArgs e)
         {
+            Response.Redirect("~/UI/Pages/Index.aspx");
 
         }
     }

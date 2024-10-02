@@ -40,7 +40,7 @@ namespace CRUD.UI.Pages
         {
             var service = new PeopleSalaryService();
             var peoples = await service.GetAllPeopleSalaryAsync(CurrentPage, PageSize);
-
+            
             
 
             peopleRepeater.DataSource = peoples;
