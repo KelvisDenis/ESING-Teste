@@ -3,6 +3,7 @@ using CRUD.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,7 +18,7 @@ namespace CRUD.UI.Pages
 
         }
         // metodo para criar nova pessoa
-        protected async void btnCreate_Click(object sender, EventArgs e)
+        protected async Task btnCreate_Click(object sender, EventArgs e)
         {
             var service = new PeopleService();
 

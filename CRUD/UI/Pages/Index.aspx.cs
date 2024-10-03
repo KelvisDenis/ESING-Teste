@@ -27,7 +27,7 @@ namespace CRUD.UI.Pages
             }
         }
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected async Task Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -50,7 +50,7 @@ namespace CRUD.UI.Pages
         }
 
         // Botão "Anterior"
-        protected async void btnPrevious_Click(object sender, EventArgs e)
+        protected async Task btnPrevious_Click(object sender, EventArgs e)
         {
             if (CurrentPage > 1)
             {
@@ -73,7 +73,7 @@ namespace CRUD.UI.Pages
         }
 
         // Busca por nome
-        protected async void btnSearch_Click(object sender, EventArgs e)
+        protected async Task btnSearch_Click(object sender, EventArgs e)
         {
             var name = searchInput.Text;
             name = name.Trim(new char[] { ' ', '\t', '\n', '\r' });
@@ -107,7 +107,7 @@ namespace CRUD.UI.Pages
 
         }
         
-        protected async void btnExcluir_Click(object sender, EventArgs e)
+        protected async Task btnExcluir_Click(object sender, EventArgs e)
         {
             var service = new PeopleSalaryService();
 

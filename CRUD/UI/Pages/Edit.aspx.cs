@@ -47,7 +47,7 @@ namespace CRUD.UI.Pages
                 DropDownListCargo.SelectedValue = person.IDCargo.ToString();
             }
         }
-        protected async void btnEdit_Click(object sender, EventArgs e)
+        protected async Task btnEdit_Click(object sender, EventArgs e)
         {
             var service = new PeopleService();
             int id = int.Parse(HiddenFieldPersonId.Value);

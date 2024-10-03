@@ -46,7 +46,7 @@ namespace CRUD.UI.Pages
 
             }
         }
-        protected async void btnUpdate_Click(object sender, EventArgs e)
+        protected async Task btnUpdate_Click(object sender, EventArgs e)
         {
             var service = new PeopleSalaryService();
 
