@@ -61,10 +61,12 @@ O banco de dados **PostgreSQL** utilizado no projeto contém as seguintes tabela
 
 2. **Configuração do Projeto:**
    - Clone o repositório do projeto no GitHub.
-   - Abra o projeto CRUD e selecione a solução no **Visual Studio**.
-   - Certifique-se de que a string de conexão no arquivo **web.config** esteja configurada corretamente para apontar para seu banco de dados PostgreSQL local.
+   - Abra a pasta CRUD e selecione projeto CRUD.csproj no **Visual Studio**.
+   - Certifique-se de que a string de conexão no arquivo **web.config** **>** **connectionStrings** esteja configurada corretamente    para apontar para seu banco de dados PostgreSQL local.
+
 
 3. **Execução do Projeto:**
+   - Esteja com o projeto **CRUD** selecionado.
    - No **Visual Studio**, vá para **Compilar**  **>** **Limpar** **Solução**.
    - Em seguida vá **Compilar**  **>** **Recompilar** **Solução**
    - Compile e execute a aplicação diretamente do **Visual Studio**.
