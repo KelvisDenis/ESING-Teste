@@ -22,7 +22,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("INSERT INTO public.\"Pessoa_Salario\" (\"Nome\", \"Salario\")" +
+                var command = new NpgsqlCommand("INSERT INTO public.\"pessoa_salario\" (\"nome\", \"salario\")" +
                     " VALUES (@Nome, @Salario)", connection);
                 command.Parameters.AddWithValue("@Nome", model.Name);
                 command.Parameters.AddWithValue("@Salario", model.Salary);
@@ -45,7 +45,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("SELECT * FROM public.\"Pessoa_Salario\" WHERE \"ID\" = @ID", connection);
+                var command = new NpgsqlCommand("SELECT * FROM public.\"pessoa_salario\" WHERE \"id\" = @ID", connection);
                 command.Parameters.AddWithValue("@ID", id);
 
                 try
@@ -57,9 +57,9 @@ namespace CRUD.Infrastructure.Repositories
                         {
                             return new PeopleSalaryModel
                             {
-                                ID = (int)reader["ID"],
-                                Name = (string)reader["Nome"],
-                                Salary = (int)reader["Salario"],
+                                ID = (int)reader["id"],
+                                Name = (string)reader["nome"],
+                                Salary = (int)reader["salario"],
 
                             };
                         }
@@ -77,7 +77,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("SELECT * FROM public.\"Pessoa_Salario\" WHERE \"Nome\" = @Nome", connection);
+                var command = new NpgsqlCommand("SELECT * FROM public.\"pessoa_salario\" WHERE \"nome\" = @Nome", connection);
                 command.Parameters.AddWithValue("@Nome", name);
 
                 try
@@ -89,9 +89,9 @@ namespace CRUD.Infrastructure.Repositories
                         {
                             return new PeopleSalaryModel
                             {
-                                ID = (int)reader["ID"],
-                                Name = (string)reader["Nome"],
-                                Salary = (int)reader["Salario"],
+                                ID = (int)reader["id"],
+                                Name = (string)reader["nome"],
+                                Salary = (int)reader["salario"],
 
                             };
                         }
@@ -112,8 +112,8 @@ namespace CRUD.Infrastructure.Repositories
             {
                 // Adiciona a lógica de paginação usando OFFSET e LIMIT
                 var command = new NpgsqlCommand(
-                    "SELECT * FROM public.\"Pessoa_Salario\" " +
-                    "ORDER BY \"ID\" " +
+                    "SELECT * FROM public.\"pessoa_salario\" " +
+                    "ORDER BY \"id\" " +
                     "OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY", connection);
 
                 // Calcula o deslocamento baseado na página e no tamanho da página
@@ -129,9 +129,9 @@ namespace CRUD.Infrastructure.Repositories
                         {
                             var people = new PeopleSalaryModel
                             {
-                                ID = (int)reader["ID"],
-                                Name = (string)reader["Nome"],
-                                Salary = (int)reader["Salario"],
+                                ID = (int)reader["id"],
+                                Name = (string)reader["nome"],
+                                Salary = (int)reader["salario"],
                             };
                             peoples.Add(people);
                         }
@@ -149,7 +149,7 @@ namespace CRUD.Infrastructure.Repositories
             using (var connection = new NpgsqlConnection(_connectionString))
             {
                 var command = new NpgsqlCommand(
-                "UPDATE public.\"Pessoa_Salario\" SET \"Nome\" = @Nome, \"Salario\" = @Salario WHERE \"ID\" = @ID", connection);
+                "UPDATE public.\"pessoa_salario\" SET \"nome\" = @Nome, \"salario\" = @Salario WHERE \"id\" = @ID", connection);
                 command.Parameters.AddWithValue("@Nome", model.Name);
                 command.Parameters.AddWithValue("@Salario", model.Salary);
                 command.Parameters.AddWithValue("@ID", model.ID);
@@ -172,7 +172,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("DELETE FROM  public.\"Pessoa_Salario\" WHERE \"ID\" = @ID", connection);
+                var command = new NpgsqlCommand("DELETE FROM  public.\"pessoa_salario\" WHERE \"id\" = @ID", connection);
                 command.Parameters.AddWithValue("@ID", id);
 
                 try
@@ -192,7 +192,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("SELECT COUNT(*) FROM public.\"Pessoa_Salario\"", connection);
+                var command = new NpgsqlCommand("SELECT COUNT(*) FROM public.\"pessoa_salario\"", connection);
                 try
                 {
                     await connection.OpenAsync();

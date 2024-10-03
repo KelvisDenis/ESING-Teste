@@ -128,9 +128,9 @@
     <Content Include="Application\Scripts\CurrencyLoadPage.js" />
     <Content Include="Global.asax" />
     <Content Include="UI\Pages\Create.aspx" />
-    <Content Include="UI\Pages\Delete.aspx" />
     <Content Include="UI\Pages\Edit.aspx" />
     <Content Include="UI\Pages\EditSalary.aspx" />
+    <Content Include="UI\Pages\ErrorPage.aspx" />
     <Content Include="UI\Pages\Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -144,6 +144,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Data\CreateTableDB.cs" />
     <Compile Include="Infrastructure\Repositories\CargoRepository.cs" />
     <Compile Include="Infrastructure\Repositories\PeopleRepository.cs" />
     <Compile Include="Infrastructure\Repositories\PeopleSalaryRepository.cs" />
@@ -154,13 +155,6 @@
     </Compile>
     <Compile Include="UI\Pages\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Pages\Delete.aspx.cs">
-      <DependentUpon>Delete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UI\Pages\Delete.aspx.designer.cs">
-      <DependentUpon>Delete.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
@@ -175,6 +169,13 @@
     </Compile>
     <Compile Include="UI\Pages\EditSalary.aspx.designer.cs">
       <DependentUpon>EditSalary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Pages\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Pages\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Pages\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

@@ -56,15 +56,26 @@ namespace CRUD.UI.Pages
             string salarioFormatado = TextBoxNovoSalario.Text.Replace("R$", "").Replace(".", "").Replace(",", "");
             int salary = int.Parse(salarioFormatado);
 
-            var people = new PeopleSalaryModel
+            try
             {
-                ID = id,
-                Name = name,
-                Salary = salary
-            };
-            var response = await service.UpdatePeopleSalaryAsync(people);
+                var people = new PeopleSalaryModel
+                {
+                    ID = id,
+                    Name = name,
+                    Salary = salary
+                };
+                var response = await service.UpdatePeopleSalaryAsync(people);
 
-            if(response) Response.Redirect("~/UI/Pages/Index.aspx");
+                if (!response) throw new Exception("Error ao atualizar salario");
+                Response.Redirect("~/UI/Pages/Index.aspx", false);
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                Response.Redirect("~/UI/Pages/ErrorPage.aspx", false);
+            }
+            
 
         }
         protected void btnReturn_Click(object sender, EventArgs e)

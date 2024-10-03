@@ -24,7 +24,7 @@ namespace CRUD.Infrastructure.Repositories
             {
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
-                    var command = new NpgsqlCommand("SELECT * FROM public.\"Pessoa\" WHERE \"ID\" = @ID", connection);
+                    var command = new NpgsqlCommand("SELECT * FROM public.\"pessoa\" WHERE \"id\" = @ID", connection);
                     command.Parameters.AddWithValue("@ID", id);
 
                     try
@@ -36,17 +36,17 @@ namespace CRUD.Infrastructure.Repositories
                             {
                                 return new People
                                 {
-                                    ID = (int)reader["ID"],
-                                    Nome = (string)reader["Nome"],
-                                    CEP = (string)reader["CEP"],
-                                    Pais = (string)reader["Pais"],
-                                    Cidade= (string)reader["Cidade"],
-                                    DataNascimento = (DateTime)reader["Data_Nascimento"],
-                                    Email= (string)reader["Email"],
-                                    Endereco= (string)reader["Endereco"],
-                                    Telefone = (string)reader["Telefone"],
-                                    Usuario = (string)reader["Usuario"],
-                                    IDCargo = (int)reader["Cargo_ID"],
+                                    ID = (int)reader["id"],
+                                    Nome = (string)reader["nome"],
+                                    CEP = (string)reader["cep"],
+                                    Pais = (string)reader["pais"],
+                                    Cidade= (string)reader["cidade"],
+                                    DataNascimento = (DateTime)reader["data_nascimento"],
+                                    Email= (string)reader["email"],
+                                    Endereco= (string)reader["endereco"],
+                                    Telefone = (string)reader["telefone"],
+                                    Usuario = (string)reader["usuario"],
+                                    IDCargo = (int)reader["cargo_id"],
 
                                 };
                             }
@@ -64,7 +64,7 @@ namespace CRUD.Infrastructure.Repositories
             {
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
-                    var command = new NpgsqlCommand("SELECT * FROM public.\"Pessoa\"  WHERE \"Nome\" = @Nome", connection);
+                    var command = new NpgsqlCommand("SELECT * FROM public.\"pessoa\"  WHERE \"nome\" = @Nome", connection);
                     command.Parameters.AddWithValue("@Nome", name);
 
                     try
@@ -76,17 +76,17 @@ namespace CRUD.Infrastructure.Repositories
                             {
                                 return new People
                                 {
-                                    ID = (int)reader["ID"],
-                                    Nome = (string)reader["Nome"],
-                                    CEP = (string)reader["CEP"],
-                                    Pais = (string)reader["Pais"],
-                                    Cidade = (string)reader["Cidade"],
-                                    DataNascimento = (DateTime)reader["Data_Nascimento"],
-                                    Email = (string)reader["Email"],
-                                    Endereco = (string)reader["Endereco"],
-                                    Telefone = (string)reader["Telefone"],
-                                    Usuario = (string)reader["Usuario"],
-                                    IDCargo = (int)reader["Cargo_ID"],
+                                    ID = (int)reader["id"],
+                                    Nome = (string)reader["nome"],
+                                    CEP = (string)reader["cep"],
+                                    Pais = (string)reader["pais"],
+                                    Cidade = (string)reader["cidade"],
+                                    DataNascimento = (DateTime)reader["data_nascimento"],
+                                    Email = (string)reader["email"],
+                                    Endereco = (string)reader["endereco"],
+                                    Telefone = (string)reader["telefone"],
+                                    Usuario = (string)reader["usuario"],
+                                    IDCargo = (int)reader["cargo_id"],
                                 };
                             }
                         }
@@ -103,7 +103,7 @@ namespace CRUD.Infrastructure.Repositories
                 var peoples = new List<People>();
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
-                    var command = new NpgsqlCommand("SELECT * FROM public.\"Pessoa\"", connection);
+                    var command = new NpgsqlCommand("SELECT * FROM public.\"pessoa\"", connection);
 
                     try
                     {
@@ -114,17 +114,17 @@ namespace CRUD.Infrastructure.Repositories
                             {
                                 var people = new People
                                 {
-                                    ID = (int)reader["ID"],
-                                    Nome = (string)reader["Nome"],
-                                    CEP = (string)reader["CEP"],
-                                    Pais = (string)reader["Pais"],
-                                    Cidade = (string)reader["Cidade"],
-                                    DataNascimento = (DateTime)reader["Data_Nascimento"],
-                                    Email = (string)reader["Email"],
-                                    Endereco = (string)reader["Endereco"],
-                                    Telefone = (string)reader["Telefone"],
-                                    Usuario = (string)reader["Usuario"],
-                                    IDCargo = (int)reader["Cargo_ID"],
+                                    ID = (int)reader["id"],
+                                    Nome = (string)reader["nome"],
+                                    CEP = (string)reader["cep"],
+                                    Pais = (string)reader["pais"],
+                                    Cidade = (string)reader["cidade"],
+                                    DataNascimento = (DateTime)reader["data_nascimento"],
+                                    Email = (string)reader["email"],
+                                    Endereco = (string)reader["endereco"],
+                                    Telefone = (string)reader["telefone"],
+                                    Usuario = (string)reader["usuario"],
+                                    IDCargo = (int)reader["cargo_id"],
                                 };
                                 peoples.Add(people);
                             }
@@ -144,8 +144,8 @@ namespace CRUD.Infrastructure.Repositories
                 {
                     using (var connection = new NpgsqlConnection(_connectionString))
                     {
-                        var command = new NpgsqlCommand("INSERT INTO public.\"Pessoa\" (\"Nome\", \"Cidade\", \"Email\"" +
-                            ", \"CEP\", \"Endereco\", \"Pais\", \"Usuario\", \"Data_Nascimento\", \"Telefone\", \"Cargo_ID\" )" +
+                        var command = new NpgsqlCommand("INSERT INTO public.\"pessoa\" (\"nome\", \"cidade\", \"email\"" +
+                            ", \"cep\", \"endereco\", \"pais\", \"usuario\", \"data_nascimento\", \"telefone\", \"cargo_id\" )" +
                             " VALUES (@Nome, @Cidade, @Email, @CEP, @Endereco, @Pais, @Usuario, @Data_Nascimento, @Telefone, @Cargo_ID)", connection);
                             command.Parameters.AddWithValue("@Nome", model.Nome);
                             command.Parameters.AddWithValue("@Cidade", model.Cidade);
@@ -177,18 +177,18 @@ namespace CRUD.Infrastructure.Repositories
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
                     var command = new NpgsqlCommand(
-                    "UPDATE public.\"Pessoa\" SET " +
-                    "\"Nome\" = @Nome, " +
-                    "\"Cidade\" = @Cidade, " +
-                    "\"Email\" = @Email, " +
-                    "\"CEP\" = @CEP, " +
-                    "\"Endereco\" = @Endereco, " +
-                    "\"Pais\" = @Pais, " +
-                    "\"Usuario\" = @Usuario, " +
-                    "\"Data_Nascimento\" = @Data_Nascimento, " +
-                    "\"Telefone\" = @Telefone, " +
-                    "\"Cargo_ID\" = @Cargo_ID " +
-                    "WHERE \"ID\" = @ID", connection);
+                    "UPDATE public.\"pessoa\" SET " +
+                    "\"nome\" = @Nome, " +
+                    "\"cidade\" = @Cidade, " +
+                    "\"email\" = @Email, " +
+                    "\"cep\" = @CEP, " +
+                    "\"endereco\" = @Endereco, " +
+                    "\"pais\" = @Pais, " +
+                    "\"usuario\" = @Usuario, " +
+                    "\"data_nascimento\" = @Data_Nascimento, " +
+                    "\"telefone\" = @Telefone, " +
+                    "\"cargo_id\" = @Cargo_ID " +
+                    "WHERE \"id\" = @ID", connection);
 
                     command.Parameters.AddWithValue("@Nome", model.Nome);
                     command.Parameters.AddWithValue("@Cidade", model.Cidade);
@@ -220,7 +220,7 @@ namespace CRUD.Infrastructure.Repositories
             {
                 using (var connection = new NpgsqlConnection(_connectionString))
                 {
-                    var command = new NpgsqlCommand("DELETE FROM  public.\"Pessoa\" WHERE \"ID\" = @ID", connection);
+                    var command = new NpgsqlCommand("DELETE FROM  public.\"pessoa\" WHERE \"id\" = @ID", connection);
                     command.Parameters.AddWithValue("@ID", id);
 
                     try

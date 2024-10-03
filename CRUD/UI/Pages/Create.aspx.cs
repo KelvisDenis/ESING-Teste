@@ -33,21 +33,31 @@ namespace CRUD.UI.Pages
 
             int cargo = int.Parse(DropDownListCargo.SelectedValue);
 
-            var pessoa = new People
+            try
             {
-                Nome = nome,
-                Cidade = cidade,
-                Pais = pais,
-                Email = email,
-                Endereco = endereco,
-                CEP = cep,
-                Usuario = usuario,
-                Telefone = telefone,
-                DataNascimento = DateTime.Parse(dataNascimento), 
-                IDCargo = cargo 
-            };
-            var response = await service.AddPeopleAsync(pessoa);
-            if (response) Response.Redirect("~/UI/Pages/Index.aspx");
+                var pessoa = new People
+                {
+                    Nome = nome,
+                    Cidade = cidade,
+                    Pais = pais,
+                    Email = email,
+                    Endereco = endereco,
+                    CEP = cep,
+                    Usuario = usuario,
+                    Telefone = telefone,
+                    DataNascimento = DateTime.Parse(dataNascimento),
+                    IDCargo = cargo
+                };
+                var response = await service.AddPeopleAsync(pessoa);
+                if (!response) throw new Exception("Erro ao adicionar pessoa");
+                Response.Redirect("~/UI/Pages/Index.aspx", false);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                Response.Redirect("~/UI/Pages/ErrorPAge.aspx", false);
+            }
+            
 
 
         }

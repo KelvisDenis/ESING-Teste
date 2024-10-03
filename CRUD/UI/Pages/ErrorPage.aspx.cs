@@ -7,11 +7,15 @@ using System.Web.UI.WebControls;
 
 namespace CRUD.UI.Pages
 {
-    public partial class Delete : System.Web.UI.Page
+    public partial class ErrorPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        protected void btHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/UI/Pages/Index.aspx");
         }
     }
 }

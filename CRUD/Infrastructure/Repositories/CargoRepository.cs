@@ -21,7 +21,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("INSERT INTO public.\"Cargo\" (\"ID\", \"Nome\", \"Salario\")" +
+                var command = new NpgsqlCommand("INSERT INTO public.\"cargo\" (\"id\", \"nome\", \"salario\")" +
                     " VALUES (@ID, @Nome, @Salario, )", connection);
                 command.Parameters.AddWithValue("@ID", model.ID);
                 command.Parameters.AddWithValue("@Nome", model.Name);
@@ -45,7 +45,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("SELECT * FROM public.\"Cargo\" WHERE \"ID\" = @ID", connection);
+                var command = new NpgsqlCommand("SELECT * FROM public.\"cargo\" WHERE \"id\" = @ID", connection);
                 command.Parameters.AddWithValue("@ID", id);
 
                 try
@@ -57,9 +57,9 @@ namespace CRUD.Infrastructure.Repositories
                         {
                             return new CargoModel
                             {
-                                ID = (int)reader["ID"],
-                                Name = (string)reader["Nome"],
-                                Salary = (int)reader["Salario"],
+                                ID = (int)reader["id"],
+                                Name = (string)reader["nome"],
+                                Salary = (int)reader["salario"],
 
                             };
                         }
@@ -77,7 +77,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("SELECT * FROM public.\"Cargo\" WHERE \"Nome\" = @Nome", connection);
+                var command = new NpgsqlCommand("SELECT * FROM public.\"cargo\" WHERE \"nome\" = @Nome", connection);
                 command.Parameters.AddWithValue("@Nome", name);
 
                 try
@@ -89,9 +89,9 @@ namespace CRUD.Infrastructure.Repositories
                         {
                             return new CargoModel
                             {
-                                ID = (int)reader["ID"],
-                                Name = (string)reader["Nome"],
-                                Salary = (int)reader["Salario"],
+                                ID = (int)reader["id"],
+                                Name = (string)reader["nome"],
+                                Salary = (int)reader["salario"],
 
                             };
                         }
@@ -110,7 +110,7 @@ namespace CRUD.Infrastructure.Repositories
             var cargos = new List<CargoModel>();
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("SELECT * FROM public.\"Cargo\"", connection);
+                var command = new NpgsqlCommand("SELECT * FROM public.\"cargo\"", connection);
 
                 try
                 {
@@ -121,9 +121,9 @@ namespace CRUD.Infrastructure.Repositories
                         {
                             var cargo = new CargoModel
                             {
-                                ID = (int)reader["ID"],
-                                Name = (string)reader["Nome"],
-                                Salary = (int)reader["Salario"],
+                                ID = (int)reader["id"],
+                                Name = (string)reader["nome"],
+                                Salary = (int)reader["salario"],
 
                             };
                             cargos.Add(cargo);
@@ -143,7 +143,7 @@ namespace CRUD.Infrastructure.Repositories
             using (var connection = new NpgsqlConnection(_connectionString))
             {
                 var command = new NpgsqlCommand(
-                "UPDATE public.\"Cargo\" SET \"Nome\" = @Nome, \"Salario\" = @Salario, WHERE \"ID\" = @ID", connection);
+                "UPDATE public.\"cargo\" SET \"nome\" = @Nome, \"salario\" = @Salario, WHERE \"id\" = @ID", connection);
                 command.Parameters.AddWithValue("@Nome", model.Name);
                 command.Parameters.AddWithValue("@Salario", model.Salary);
                 command.Parameters.AddWithValue("@ID", model.ID);
@@ -166,7 +166,7 @@ namespace CRUD.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                var command = new NpgsqlCommand("DELETE FROM  public.\"Cargo\" WHERE \"ID\" = @ID", connection);
+                var command = new NpgsqlCommand("DELETE FROM  public.\"cargo\" WHERE \"id\" = @ID", connection);
                 command.Parameters.AddWithValue("@ID", id);
 
                 try

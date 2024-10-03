@@ -116,6 +116,8 @@ namespace CRUD.UI.Pages
 
             var response = await service.RemovePeopleSalaryAsync(id);
 
+            if (!response) Response.Redirect("~/UI/Pages/ErrorPage.aspx", false);
+
             Response.Redirect(Request.RawUrl);
 
         }

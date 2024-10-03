@@ -63,25 +63,35 @@ namespace CRUD.UI.Pages
 
             int cargo = int.Parse(DropDownListCargo.SelectedValue);
 
-            var pessoa = new People
+            try
             {
-                ID = id,
-                Nome = nome,
-                Cidade = cidade,
-                Pais = pais,
-                Email = email,
-                Endereco = endereco,
-                CEP = cep,
-                Usuario = usuario,
-                Telefone = telefone,
-                DataNascimento = DateTime.Parse(dataNascimento),
-                IDCargo = cargo
-                
-            };
+                var pessoa = new People
+                {
+                    ID = id,
+                    Nome = nome,
+                    Cidade = cidade,
+                    Pais = pais,
+                    Email = email,
+                    Endereco = endereco,
+                    CEP = cep,
+                    Usuario = usuario,
+                    Telefone = telefone,
+                    DataNascimento = DateTime.Parse(dataNascimento),
+                    IDCargo = cargo
 
-            var response = await service.UpdatePeopleAsync(pessoa);
-            if (response) Response.Redirect("~/UI/Pages/Index.aspx");
+                };
+
+                var response = await service.UpdatePeopleAsync(pessoa);
+                if (!response) throw new Exception("Error ao atualizar pessoa");
+                    Response.Redirect("~/UI/Pages/Index.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Response.Redirect("~/UI/Pages/ErrorPage.aspx", false);
+            }
         }
+            
         protected void btnReturn_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/UI/Pages/Index.aspx");
