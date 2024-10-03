@@ -18,7 +18,7 @@ namespace CRUD.UI.Pages
 
         }
         // metodo para criar nova pessoa
-        protected async Task btnCreate_Click(object sender, EventArgs e)
+        protected async void btnCreate_Click(object sender, EventArgs e)
         {
             var service = new PeopleService();
 
