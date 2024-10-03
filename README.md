@@ -69,7 +69,7 @@ O banco de dados **PostgreSQL** utilizado no projeto contém as seguintes tabela
    - Esteja com o projeto **CRUD** selecionado.
    - No **Visual Studio**, vá para **Compilar**  **>** **Limpar** **Solução**.
    - Em seguida vá **Compilar**  **>** **Recompilar** **Solução**
-   - Compile e execute a aplicação diretamente do **Visual Studio**.
+   - Execute a aplicação diretamente do **Visual Studio** clicando em **IIS** **Express**.
    - O banco de dados será automaticamente configurado, e as tabelas necessárias serão criadas.
    - Navegue até a interface da aplicação pelo navegador para visualizar a listagem de salários e utilizar as funções de CRUD.
 
@@ -82,4 +82,4 @@ Este projeto foi desenvolvido com foco em:
 
 ---
 
-Desenvolvido por [Denis Kelvis].
+Desenvolvido por Denis Kelvis.

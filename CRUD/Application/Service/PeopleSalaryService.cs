@@ -67,6 +67,18 @@ namespace CRUD.Application.Service
         }
 
         /// <summary>
+        /// Obtém todos os pessoas_salario por nome com paginação.
+        /// </summary>
+        /// <param name="pageNumber">Número da página.</param>
+        /// <param name="pageSize">Tamanho da página.</param>
+        ///  /// <param name="name">nome da pessoa.</param> 
+        /// <returns>Retorna uma lista de todos os modelos de salários de pessoas por nome requisitado.</returns>
+        public async Task<IEnumerable<PeopleSalaryModel>> GetAllPeopleSalaryBynameAsync(int pageNumber, int pageSize, string name)
+        {
+            return await _peopleSalaryRepository.GetAllPeopleSalarByNameAsync(pageNumber, pageSize, name);  // Chama o método do repositório para obter todos os salários
+        }
+
+        /// <summary>
         /// Obtém a contagem total de salários de pessoas.
         /// </summary>
         /// <returns>Retorna o número total de salários de pessoas.</returns>

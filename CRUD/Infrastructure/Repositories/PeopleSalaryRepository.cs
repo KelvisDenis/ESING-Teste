@@ -129,6 +129,53 @@ namespace CRUD.Infrastructure.Repositories
         }
 
         /// <summary>
+        /// Método assíncrono que busca os registros por nome de pessoa_salario, com paginação.
+        /// </summary>
+        /// <param name="pageNumber">Número da página a ser retornada.</param>  
+        /// <param name="pageSize">Número de registros por página.</param>
+        /// <returns>Uma lista de objetos PeopleSalaryModel representando os salários das pessoas.</returns>
+        public async Task<IEnumerable<PeopleSalaryModel>> GetAllPeopleSalarByNameAsync(int pageNumber, int pageSize , string name)
+        {
+            var peoples = new List<PeopleSalaryModel>(); // Cria uma lista para armazenar os registros
+            using (var connection = new NpgsqlConnection(_connectionString)) // Cria uma nova conexão com o banco de dados
+            {
+                // Prepara o comando SQL para buscar todos os registros com paginação
+                var command = new NpgsqlCommand(
+                    "SELECT * FROM public.\"pessoa_salario\" " +
+                    "WHERE \"nome\" = @Nome " +
+                    "OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY", connection);
+
+                // Calcula o deslocamento baseado na página e no tamanho da página
+                command.Parameters.AddWithValue("@Nome", name); // Adiciona o parâmetro de nome ao comando
+                command.Parameters.AddWithValue("@Offset", (pageNumber - 1) * pageSize); // Adiciona o parâmetro de deslocamento
+                command.Parameters.AddWithValue("@PageSize", pageSize); // Adiciona o parâmetro de tamanho da página
+
+                try
+                {
+                    await connection.OpenAsync(); // Abre a conexão de forma assíncrona
+                    using (var reader = await command.ExecuteReaderAsync()) // Executa o comando e obtém o leitor de dados
+                    {
+                        while (await reader.ReadAsync()) // Lê as linhas de resultados
+                        {
+                            var people = new PeopleSalaryModel // Cria um novo objeto para cada registro encontrado
+                            {
+                                ID = (int)reader["id"],
+                                Name = (string)reader["nome"],
+                                Salary = (int)reader["salario"],
+                            };
+                            peoples.Add(people); // Adiciona o objeto à lista
+                        }
+                    }
+                }
+                catch (Exception ex) // Captura qualquer exceção que ocorra
+                {
+                    Console.WriteLine(ex.Message); // Exibe a mensagem de erro no console
+                }
+            }
+            return peoples; // Retorna a lista de registros com o nome selecionado
+        }
+
+        /// <summary>
         /// Método assíncrono que busca todos os registros de salários de pessoas, com paginação.
         /// </summary>
         /// <param name="pageNumber">Número da página a ser retornada.</param>

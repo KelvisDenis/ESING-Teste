@@ -105,8 +105,8 @@ namespace CRUD.UI.Pages
             if (!string.IsNullOrEmpty(name))
             {
                 // Realiza a busca por nome
-                var people = await service.GetPeopleSalaryByNameAsync(name);
-                peoples.Add(people);
+                var people = await service.GetAllPeopleSalaryBynameAsync(CurrentPage, PageSize, name);
+                peoples.AddRange(people);
 
                 if (people == null || peoples.Count == 0)
                 {
