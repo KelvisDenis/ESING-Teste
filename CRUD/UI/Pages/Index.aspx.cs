@@ -50,7 +50,7 @@ namespace CRUD.UI.Pages
         }
 
         // Botão "Anterior"
-        protected async Task btnPrevious_Click(object sender, EventArgs e)
+        protected async void btnPrevious_Click(object sender, EventArgs e)
         {
             if (CurrentPage > 1)
             {
@@ -60,7 +60,7 @@ namespace CRUD.UI.Pages
         }
 
         // Botão "Próxima"
-        protected async Task btnNext_Click(object sender, EventArgs e)
+        protected async void btnNext_Click(object sender, EventArgs e)
         {
             var service = new PeopleSalaryService();
             var totalPeople = (await service.GetTotalPeopleSalaryCountAsync());

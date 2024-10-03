@@ -65,7 +65,8 @@ O banco de dados **PostgreSQL** utilizado no projeto contém as seguintes tabela
    - Certifique-se de que a string de conexão no arquivo **web.config** esteja configurada corretamente para apontar para seu banco de dados PostgreSQL local.
 
 3. **Execução do Projeto:**
-   - No **Visual Studio**, vá para **Compilar**  **>** **Limpar** **Solução** .
+   - No **Visual Studio**, vá para **Compilar**  **>** **Limpar** **Solução**.
+   - Em seguida vá **Compilar**  **>** **Recompilar** **Solução**
    - Compile e execute a aplicação diretamente do **Visual Studio**.
    - O banco de dados será automaticamente configurado, e as tabelas necessárias serão criadas.
    - Navegue até a interface da aplicação pelo navegador para visualizar a listagem de salários e utilizar as funções de CRUD.
