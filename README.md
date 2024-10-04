@@ -51,8 +51,8 @@ O banco de dados **PostgreSQL** utilizado no projeto contém as seguintes tabela
 
 ### Pré-requisitos
 - **PostgreSQL**
-- **ASP.NET Web Forms**
-- **Visual Studio** para desenvolvimento
+- **.NET SDK**
+- **Visual Studio** de preferência a versão 2019.
 
 ### Passos para Executar
 
@@ -70,9 +70,10 @@ O banco de dados **PostgreSQL** utilizado no projeto contém as seguintes tabela
    - No **Visual Studio**, vá para **Compilar**  **>** **Limpar** **Solução**.
    - Em seguida vá **Compilar**  **>** **Recompilar** **Solução**
    - Execute a aplicação diretamente do **Visual Studio** clicando em **IIS** **Express**.
-   - Caso dê algum erro, repita novamente os mesmos passos com o projeto CRUD.csproj selecionado no **Gerenciador** **de** **Soluções**.
    - O banco de dados será automaticamente configurado, e as tabelas necessárias serão criadas.
    - Navegue até a interface da aplicação pelo navegador para visualizar a listagem de salários e utilizar as funções de CRUD.
+   - Caso dê algum erro, repita novamente os mesmos passos com o projeto CRUD.csproj selecionado no **Gerenciador** **de** **Soluções**.
+
 
 ## Considerações Finais
 Este projeto foi desenvolvido com foco em:
